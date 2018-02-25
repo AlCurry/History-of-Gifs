@@ -1,13 +1,32 @@
-topics = ["Samba", "Mambo", "Disco", "Pogo", "New Wave", "Tango", "Cha Cha Cha", "Polka", "Breakdance", "Merengue", "Moonwalk","Ballroom Dancing","Charleston", "Ballet", "Tap Dancing"];
+/* 
+  Gif API (giphy)  -  a page that interacts with it, displaying a set of buttons to extract gifs on click, and 
+  add new buttons if user requests it. The light-hearted initial theme is dancing, but user can enter any
+  word for more gifs.
 
-// Rainbow colors :  red, orange, yellow, green, blue, purple
+Homework Assignment  6 - html, css, javascript, jquery api 
+              
+Al Curry  February 26, 2018
+
+GWU full stack development program  
+
+this module  called by index.html
+
+ */
+
+ // list of initial buttons to be displayed across the top of the screen
+topics = ["Samba", "Mambo", "Disco", "Pogo", "New Wave", "Tango", "Cha Cha Cha", "Polka", "Breakdance", "Merengue", "Moonwalk", "Ballroom Dancing", "Charleston", "Ballet", "Tap Dancing"];
+
+// Rainbow colors :  red, orange, yellow, green, blue, purple - buttons will have these background colors
 colors = ["#E70000", "#FF8C00", "#FFEF00", "#00811F", "#0044FF", "#760089"];
+
+// display each button in the topics array
 for (var i = 0; i < topics.length; i++) {
     // var but = $("<button>").text(topics[i]);
     var colorIdx = i > 5 ? i % 6 : i;
     displayButton(topics[i], colorIdx);
 }
 
+// function to display a button
 function displayButton(subject, cIndex) {
     var but = $("<button>").text(subject);
     but.attr("class", "btnStyle btnSelect");
@@ -16,6 +35,7 @@ function displayButton(subject, cIndex) {
     $("#button-list").append(but);
 }
 
+// if user enters and submits a new button, add it to the display
 $("#submit").on("click", function () {
     event.preventDefault();
     
@@ -28,6 +48,8 @@ $("#submit").on("click", function () {
     }    
 });
 
+// when a button is clicked, call ajax with the url using that button's data-topic as the query word
+// the promise displays the gifs, with sitll and animated versions, and an initial data-state of "still"
 $(document).on("click", ".btnSelect", function () {
     event.preventDefault();
     var subject = $(this).attr("data-topic");
@@ -65,6 +87,7 @@ $(document).on("click", ".btnSelect", function () {
     });
 });
 
+// when a gif is clicked, toggle the displayed state from still to animated, or reverse
 //$(".gif").on("click", function () {
 $(document).on("click", ".gif", function () {
     event.preventDefault();
@@ -81,6 +104,7 @@ $(document).on("click", ".gif", function () {
     }
 });
 
+// some fun animations for the page headers (h1 & h2), executes on page load and when the "Clear Gifs.." button is clicked
 var animationend = 'animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSanimationEnd';
 
 $(document).on("click", ".btnClear", function () {

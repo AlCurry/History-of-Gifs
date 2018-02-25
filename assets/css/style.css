@@ -1,0 +1,33 @@
+.btnStyle {
+    border-radius: 5px;
+    margin: 3px;
+}
+
+.item {
+    float: left;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+#hdr1, #hdr2 {
+    font-family: 'Poiret One', cursive;
+    text-align: center;
+    font-weight: bold;
+}
+
+#btnClear {
+     margin: 10px;
+}
+
+#nextButton {
+   border-radius: 5px;
+   padding: 0 0 5px 5px;
+}
+
+#addLabel {
+    padding: 5px 0 0 5px;
+}
+
+#alignInput {
+    padding: 0 0 5px 5px;
+}
